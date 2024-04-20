@@ -1,6 +1,5 @@
-version: '2.2'
 services:
-  stagingdb:
+  postgres:
     image: postgres:16
     restart: always
     env_file:
@@ -16,17 +15,17 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - esgstagingnetwork
+      - esgdevnetwork
 
-  stagingadminer:
+  adminer:
     image: adminer:4.8.1
     restart: always
     ports:
       - 8080:8080
     networks:
-      - esgstagingnetwork
+      - esgdevnetwork
 
 networks:
-  esgstagingnetwork:
+  esgdevnetwork:
     driver: bridge
 
